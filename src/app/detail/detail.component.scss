@@ -1,0 +1,13 @@
+.detail {
+  width: 100%;
+  padding-left: 25px;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    padding: 8px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    display: block;
+  }
+}
