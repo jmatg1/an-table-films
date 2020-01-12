@@ -1,11 +1,16 @@
 .container {
   display: flex;
   width: 1200px;
+  position: relative;
   margin: 0 auto;
+  top: 25px;
 }
 .container-grids {
   width: 800px;
 }
 .container-detail {
+  position: fixed;
+  margin-left: 810px;
+  top: 103px;
   width: 400px;
 }

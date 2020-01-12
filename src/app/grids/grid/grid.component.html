@@ -1,28 +1,71 @@
-<table>
-  <tr>
-    <th>Название</th>
-    <th>Год</th>
-    <th>Оскар</th>
-    <th>Сборы</th>
-  </tr>
-  <tr>
-    <td>Peter</td>
-    <td>Griffin</td>
-    <td>$100</td>
-  </tr>
-  <tr>
-    <td>Lois</td>
-    <td>Griffin</td>
-    <td>$150</td>
-  </tr>
-  <tr>
-    <td>Joe</td>
-    <td>Swanson</td>
-    <td>$300</td>
-  </tr>
-  <tr>
-    <td>Cleveland</td>
-    <td>Brown</td>
-    <td>$250</td>
-  </tr>
-</table>
+<h2>{{films.title}}</h2>
+<input
+  class="input"
+  placeholder="Название фильма..."
+  type="text"
+  [value]="search"
+  (change)="onChangeSearch($event)">
+<div class="container-table">
+  <table
+    cdkDropList
+    id="{{id + ''}}"
+    [cdkDropListData]="films.data"
+    [cdkDropListConnectedTo]="allDropLists"
+    (cdkDropListDropped)="onDrop($event)">
+    <thead>
+      <tr>
+        <th *ngIf="headTable.name">{{headTable.name}}</th>
+        <th *ngIf="headTable.description">{{headTable.description}}</th>
+        <th *ngIf="headTable.oscar">{{headTable.oscar}}</th>
+        <th *ngIf="headTable.oscarCount">{{headTable.oscarCount}}</th>
+        <th class="rating" *ngIf="headTable.rating">{{headTable.rating}}</th>
+        <th *ngIf="headTable.feels">{{headTable.feels}}</th>
+        <th
+          class="th-clickable"
+          (click)="onClickHeaderTable('date')"
+          *ngIf="headTable.date">
+          {{headTable.date}}
+          <fa-icon
+            class="arrow"
+            *ngIf="sortDate === true"
+            [icon]="faSortUp"></fa-icon>
+          <fa-icon
+            class="arrow"
+            *ngIf="sortDate === false"
+            [icon]="faSortDown"></fa-icon>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let film of films.data | filter: search: 'name'"
+        (click)="onClickFilm(film)"
+        cdkDrag>
+        <td *ngIf="film.name">{{film.name}}</td>
+        <td *ngIf="film.description">{{film.description | slice : 0: 56 }}...</td>
+        <td *ngIf="film.oscarCount !== undefined">{{film.oscarCount}}</td>
+        <td *ngIf="film.oscar !== undefined">
+          <fa-icon
+            *ngIf="film.oscar"
+            [icon]="faTrophy"
+            [styles]="{'stroke': 'black', 'color': '#ca251d'}"></fa-icon>
+        </td>
+        <td *ngIf="film.rating">
+          <star-rating
+            value="{{film.rating}}"
+            totalstars="10"
+            checkedcolor="red"
+            uncheckedcolor="black"
+            size="10px"
+            readonly="true">
+          </star-rating>
+        </td>
+        <td
+          *ngIf="film.feels">
+          {{film.feels | currency:'CAD':'symbol-narrow':'4.0'}}
+        </td>
+        <td *ngIf="film.date">{{film.date | date:'yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,8 +1,9 @@
 <ul class="grids">
-  <li class="grids__item">
-    <app-grid></app-grid>
-  </li>
-  <li class="grids__item">
-    <app-grid></app-grid>
+  <li class="grids__item" *ngFor="let films of filmsList; let i = index">
+    <app-grid
+      [films]="films"
+      [id]="i"
+      [allDropLists]="allDropLists"
+    ></app-grid>
   </li>
 </ul>

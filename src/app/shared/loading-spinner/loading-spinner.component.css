@@ -1,4 +1,10 @@
-                                                                                                                                                                                                                   <style type="text/css">
+.spinner-block {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}                                                                                                                                                                                                              <style type="text/css">
 @keyframes ldio-wvwr3j0v3pm {
   0% { opacity: 1 }
   100% { opacity: 0 }

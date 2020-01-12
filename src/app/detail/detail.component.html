@@ -1,11 +1,23 @@
 <div class="detail">
   <div class="detail__title">Описание фильма</div>
-  <div class="detail__name">Название: </div>
-  <div class="detail__year">Год: </div>
-  <div class="detail__rating">Рейтинг: </div>
-  <div class="detail__oscar">Оскар: </div>
-  <div class="detail__fees">Сборы: </div>
-  <div class="detail__desc">
-    Описание:
+  <div class="detail__list" *ngIf="filmSelected; else emptyText">
+    <div>Название: {{filmSelected.film.name}}</div>
+    <div>Год: {{filmSelected.film.date | date: 'yyyy'}}</div>
+    <div *ngIf="filmSelected.film.rating !== undefined">Рейтинг: {{filmSelected.film.rating}}</div>
+    <div *ngIf="filmSelected.film.oscar !== undefined">Оскар: {{filmSelected.film.oscar ? 'Есть' : 'Неизвестно'}}</div>
+    <div *ngIf="filmSelected.film.oscarCount !== undefined">Всего оскаров: {{filmSelected.film.oscarCount}}</div>
+    <div
+      class="detail__feels"
+      (click)="onEditFeels()">
+      Сборы: {{filmSelected.film.feels | currency:'CAD':'symbol-narrow':'4.0'}}</div>
+    <div>
+      <p>
+        Описание: <br>
+        {{filmSelected.film.description}}
+      </p>
+    </div>
   </div>
+  <ng-template #emptyText>
+    Выберите фильм в таблицах слево
+  </ng-template>
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!loading; else spinner">
   <div class="container-grids">
     <app-grids></app-grids>
   </div>
@@ -6,3 +6,6 @@
     <app-detail></app-detail>
   </div>
 </div>
+<ng-template #spinner>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>
