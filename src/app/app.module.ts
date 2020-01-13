@@ -8,11 +8,11 @@ import { GridsComponent } from './grids/grids.component';
 
 import { RatingModule } from 'ng-starrating';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from "@angular/forms";
-import { FilterPipe } from "./grids/grid/filter.pipe";
-import { HttpClientModule } from "@angular/common/http";
-import { DragDropModule } from "@angular/cdk/drag-drop";
-import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './grids/grid/filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
